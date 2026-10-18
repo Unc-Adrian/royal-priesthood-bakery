@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Royal Priesthood Bakery</title>
+    <meta name="description" content="Browse breads, pastries, cakes and treats from Royal Priesthood Bakery.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">Royal Priesthood Bakery</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html" class="active">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h1>Our Products</h1>
+        </section>
+
+        <!-- Product category tabs -->
+        <section class="section products-tabs-section">
+            <div class="tabs" role="tablist" aria-label="Product categories">
+                <button class="tab active" role="tab" aria-selected="true" aria-controls="panel-cakes" id="tab-cakes" data-tab="cakes">Cakes</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="panel-pastries" id="tab-pastries" data-tab="pastries">Pastries</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="panel-cookies" id="tab-cookies" data-tab="cookies">Cookies &amp; Biscuits</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="panel-savoury" id="tab-savoury" data-tab="savoury">Savoury</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="panel-tarts" id="tab-tarts" data-tab="tarts">Tarts</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="panel-bread" id="tab-bread" data-tab="bread">Bread</button>
+            </div>
+
+
+
+            <div class="tab-panel active" id="panel-cakes" role="tabpanel" aria-labelledby="tab-cakes">
+                <ul class="product-list">
+                    <li>Candy cakes</li>
+                    <li>Carrot cakes</li>
+                    <li>Chocolate cakes</li>
+                    <li>Cup cakes</li>
+                    <li>Fruit cakes</li>
+                    <li>Madeira cakes</li>
+                    <li>Queen cakes</li>
+                    <li>Swiss roll</li>
+                </ul>
+            </div>
+
+            <div class="tab-panel" id="panel-pastries" role="tabpanel" aria-labelledby="tab-pastries" hidden>
+                <ul class="product-list">
+                    <li>Apple pies</li>
+                    <li>Chelsea buns</li>
+                    <li>Croissants</li>
+                    <li>Doughnuts</li>
+                    <li>Eclairs</li>
+                    <li>Melting moments</li>
+                    <li>Muffins</li>
+                    <li>Rock buns</li>
+                </ul>
+            </div>
+
+            <div class="tab-panel" id="panel-bread" role="tabpanel" aria-labelledby="tab-bread" hidden>
+                <ul class="product-list">
+                    <li>Rustic Loaf</li>
+                    <li>Whole Wheat Loaf</li>
+                    <li>White Bread</li>
+                    <li>Brown Bread</li>
+                </ul>
+            </div>
+
+            <div class="tab-panel" id="panel-cookies" role="tabpanel" aria-labelledby="tab-cookies" hidden>
+                <ul class="product-list">
+                    <li>Biscuits</li>
+                    <li>Chocolate chip cookies</li>
+                </ul>
+            </div>
+
+            <div class="tab-panel" id="panel-savoury" role="tabpanel" aria-labelledby="tab-savoury" hidden>
+                <ul class="product-list">
+                    <li>Pies</li>
+                    <li>Pizza</li>
+                    <li>Samoosa</li>
+                    <li>Sandwich</li>
+                    <li>Sausage rolls</li>
+                    <li>Wraps</li>
+                </ul>
+            </div>
+
+            <div class="tab-panel" id="panel-tarts" role="tabpanel" aria-labelledby="tab-tarts" hidden>
+                <ul class="product-list">
+                    <li>Tarts</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="card-grid product-grid">
+                <article class="card product-card">
+                    <div class="card-img-wrap">
+                        <img src="images/croissant.jpg" alt="Golden, flaky butter croissant" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <span class="tag">Pastry</span>
+                        <h3>Croissants</h3>
+                        <p>Layers of flaky pastry with a golden, buttery finish.</p>
+                    </div>
+                </article>
+
+                <article class="card product-card">
+                    <div class="card-img-wrap">
+                        <img src="images/bread.jpg" alt="A rustic loaf of freshly baked bread" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <span class="tag">Bread</span>
+                        <h3>Rustic Loaf</h3>
+                        <p>A crisp crust and a soft centre, ideal for sharing.</p>
+                    </div>
+                </article>
+
+                <article class="card product-card">
+                    <div class="card-img-wrap">
+                        <img src="images/cake.jpg" alt="Vanilla cake" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <span class="tag">Cake</span>
+                        <h3>Celebration Cake</h3>
+                        <p>Soft sponge and smooth icing for special days.</p>
+                    </div>
+                </article>
+
+                <article class="card product-card">
+                    <div class="card-img-wrap">
+                        <img src="images/cupcake.jpg" alt="Pastel frosted cupcakes" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <span class="tag">Cake</span>
+                        <h3>Pastel Cupcakes</h3>
+                        <p>Small, soft cakes topped with swirls of frosting.</p>
+                    </div>
+                </article>
+
+                <article class="card product-card">
+                    <div class="card-img-wrap">
+                        <img src="images/muffins.jpg" alt="Fresh muffins with berries" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <span class="tag">Pastry</span>
+                        <h3>Berry Muffins</h3>
+                        <p>Moist muffins with a golden top and fruity centre.</p>
+                    </div>
+                </article>
+
+                <article class="card product-card">
+                    <div class="card-img-wrap">
+                        <img src="images/cookies.jpg" alt="Chocolate chip cookies on a plate" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <span class="tag">Sweet</span>
+                        <h3>Chocolate Chip Cookies</h3>
+                        <p>Crisp edges, soft centres and plenty of chocolate.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="cta-band">
+            <h2>Looking for something special?</h2>
+            <p>Tell us what you need and we will help.</p>
+            <a href="contact.html" class="btn btn-light">Contact Us</a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="year">2026</span> Royal Priesthood Bakery. All rights reserved.</p>
+        <p><a href="https://wa.me/c/263718208389" target="_blank" rel="noopener">Other products (Whatsapp catalog)</a></p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

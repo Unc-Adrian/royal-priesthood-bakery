@@ -1,0 +1,531 @@
+/* ==========================================================
+   Royal Priesthood Bakery - style.css
+   One stylesheet shared by all four pages.
+   Written mobile-first: base styles are for phones, and the
+   @media block at the bottom adds layout for bigger screens.
+   ========================================================== */
+
+/* ---------- 1. VARIABLES (our colour palette) ---------- */
+:root {
+    --cream: #fff8ee;        /* page background */
+    --butter: #f6e7c8;       /* card background */
+    --pink: #f4d6cc;         /* soft pastel accent */
+    --caramel: #c68b59;      /* buttons and highlights */
+    --brown: #5c3a21;        /* text and navbar */
+    --brown-dark: #3f2814;   /* button hover */
+    --white: #ffffff;
+    --error: #b3261e;        /* error text and borders */
+    --success: #2e6b3a;      /* success message */
+    --radius: 12px;
+    --shadow: 0 4px 14px rgba(92, 58, 33, 0.15);
+    --shadow-hover: 0 14px 28px rgba(92, 58, 33, 0.28);
+}
+
+/* ---------- 2. RESET AND BASE ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;   /* width includes padding and border */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background-color: var(--cream);
+    color: var(--brown);
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+h1, h2, h3 {
+    line-height: 1.25;
+}
+
+/* Visible keyboard focus: important for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--caramel);
+    outline-offset: 2px;
+}
+
+/* ---------- 3. NAVBAR ---------- */
+.site-header {
+    background-color: var(--brown);
+    position: sticky;          /* stays at the top while scrolling */
+    top: 0;
+    z-index: 100;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;           /* lets the link list drop below on mobile */
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+}
+
+.logo {
+    color: var(--butter);
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.nav-toggle {
+    background: none;
+    border: none;
+    color: var(--butter);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* On mobile the links are hidden... */
+.nav-links {
+    display: none;
+    list-style: none;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* ...and JavaScript adds the class "open" to show them */
+.nav-links.open {
+    display: block;
+}
+
+.nav-links li {
+    margin-bottom: 0.75rem;
+}
+
+.nav-links a {
+    color: var(--cream);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--caramel);
+    border-bottom-color: var(--caramel);
+}
+
+/* ---------- 4. HERO (Home page) ---------- */
+.hero {
+    /* The gradient darkens the photo so the text stays readable.
+       The image path starts with ../ because this CSS file is inside css/ */
+    background: linear-gradient(rgba(92, 58, 33, 0.55), rgba(92, 58, 33, 0.55)),
+                url("../images/hero\ \(2\).webp") center / cover no-repeat;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1.5rem;
+}
+
+.hero-content {
+    max-width: 600px;
+    color: var(--cream);
+}
+
+.hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+/* ---------- 5. PAGE HEADER (inner pages) ---------- */
+.page-header {
+    background: linear-gradient(135deg, var(--butter), var(--pink));
+    text-align: center;
+    padding: 3rem 1.5rem;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ---------- 6. BUTTONS ---------- */
+.btn {
+    display: inline-block;
+    background-color: var(--caramel);
+    color: var(--white);
+    border: none;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    font-family: inherit;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--brown-dark);
+    transform: translateY(-3px);
+}
+
+.btn-light {
+    background-color: var(--cream);
+    color: var(--brown);
+}
+
+.btn-light:hover {
+    background-color: var(--white);
+    color: var(--brown-dark);
+}
+
+/* ---------- 7. SECTIONS ---------- */
+.section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+/* ---------- 8. CARD GRID (Home, Products, About) ---------- */
+/* auto-fit + minmax: as many 250px columns as fit, so the grid
+   adapts to phone, tablet and desktop without extra media queries */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: var(--butter);
+    border-radius: var(--radius);
+    overflow: hidden;                 /* clips image corners */
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);      /* the card lifts */
+    box-shadow: var(--shadow-hover);  /* and its shadow grows */
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;                /* crop instead of stretching */
+}
+
+.card-body {
+    padding: 1rem 1.2rem 1.4rem;
+}
+
+.card-body h3 {
+    margin-bottom: 0.4rem;
+}
+
+/* ---------- 9. PRODUCT CARDS (extra hover effects) ---------- */
+.card-img-wrap {
+    overflow: hidden;                 /* hides the zoomed-in edges */
+}
+
+.product-card img {
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.08);           /* image zooms slowly inside the frame */
+}
+
+.tag {
+    display: inline-block;
+    background-color: var(--pink);
+    color: var(--brown);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.7rem;
+    border-radius: 50px;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.product-card:hover .tag {
+    background-color: var(--caramel);
+    color: var(--white);
+}
+
+/* ---------- 10. ABOUT PAGE ---------- */
+.about-story {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+}
+
+.about-story img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.story-text h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.story-text p {
+    margin-bottom: 1rem;
+}
+
+.value-card {
+    text-align: center;
+    background-color: var(--pink);
+}
+
+/* ---------- 11. CALL-TO-ACTION BAND ---------- */
+.cta-band {
+    background-color: var(--brown);
+    color: var(--cream);
+    text-align: center;
+    padding: 3rem 1.5rem;
+}
+
+.cta-band h2 {
+    margin-bottom: 0.5rem;
+}
+
+.cta-band p {
+    margin-bottom: 1.5rem;
+}
+
+/* ---------- 12. CONTACT PAGE AND FORM ---------- */
+.contact-layout {
+    display: grid;
+    gap: 2rem;
+}
+
+.contact-form,
+.contact-info {
+    background-color: var(--butter);
+    padding: 1.8rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.contact-form h2,
+.contact-info h2 {
+    margin-bottom: 1.2rem;
+    font-size: 1.5rem;
+}
+
+.contact-info p {
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--brown);
+    background-color: var(--white);
+    border: 2px solid #d8c3a0;
+    border-radius: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--caramel);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(198, 139, 89, 0.3);
+}
+
+/* The class "invalid" is added by JavaScript when a field fails */
+.form-group input.invalid,
+.form-group textarea.invalid {
+    border-color: var(--error);
+}
+
+.error-message {
+    display: block;
+    min-height: 1.3em;     /* reserves space so the layout does not jump */
+    margin-top: 0.3rem;
+    font-size: 0.9rem;
+    color: var(--error);
+}
+
+.form-success {
+    margin-top: 1.2rem;
+    padding: 0.9rem 1rem;
+    background-color: #e5f2e7;
+    color: var(--success);
+    border: 1px solid var(--success);
+    border-radius: 8px;
+}
+
+.form-success[hidden] {
+    display: none;         /* keeps the "hidden" attribute working */
+}
+
+/* ---------- 13. FOOTER ---------- */
+.site-footer {
+    background-color: var(--brown-dark);
+    color: var(--butter);
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.site-footer .credits {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-top: 0.3rem;
+}
+
+/* ---------- 14. TABLET AND DESKTOP (768px and wider) ---------- */
+@media (min-width: 768px) {
+    .nav-toggle {
+        display: none;         /* no hamburger on larger screens */
+    }
+
+    .nav-links {
+        display: flex;         /* links sit in a row */
+        width: auto;
+        margin-top: 0;
+        gap: 2rem;
+    }
+
+    .nav-links li {
+        margin-bottom: 0;
+    }
+
+    .hero h1 {
+        font-size: 3.2rem;
+    }
+
+    .page-header h1 {
+        font-size: 2.8rem;
+    }
+
+    .about-story {
+        grid-template-columns: 1fr 1fr;   /* image left, text right */
+        gap: 3rem;
+    }
+
+    .contact-layout {
+        grid-template-columns: 2fr 1fr;   /* form wider than details */
+    }
+}
+
+/* ---------- 15. RESPECT "REDUCED MOTION" SETTINGS ---------- */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+.brand-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.site-footer a{
+    color: #f6e7c8;
+}
+
+/* ---------- 16. PRODUCT TABS ---------- */
+.products-tabs-section {
+    padding-top: 2rem;
+}
+
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    border-bottom: 2px solid #e6d6b8;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.tab {
+    background: none;
+    border: 2px solid transparent;
+    color: var(--brown);
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.tab:hover {
+    background-color: var(--pink);
+}
+
+.tab.active {
+    background-color: var(--caramel);
+    color: var(--white);
+    border-color: var(--caramel);
+}
+
+.tab-panel[hidden] {
+    display: none;
+}
+
+/* Products flow into neat columns instead of one long line */
+.product-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.6rem 1.5rem;
+}
+
+.product-list li {
+    padding: 0.4rem 0.6rem;
+    background-color: var(--butter);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.product-list li:hover {
+    transform: translateY(-3px);
+    background-color: var(--pink);
+}
